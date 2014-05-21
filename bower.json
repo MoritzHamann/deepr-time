@@ -1,0 +1,24 @@
+{
+  "name": "deepr-time",
+  "version": "0.0.1-alpha",
+  "homepage": "https://github.com/mohikaner/deepr-time",
+  "authors": [
+    "Moritz Hamann"
+  ],
+  "description": "record working times",
+  "main": "main.js",
+  "keywords": [
+    "deepr",
+    "time",
+    "log",
+    "record"
+  ],
+  "license": "MIT",
+  "private": true,
+  "directory": "public",
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "ember": "~1.5",
+    "ember-data": "~1.0.0-beta.4"
+  }
+}
