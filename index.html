@@ -4,6 +4,7 @@
     <link rel="shortcut icon" href="public/img/favicon.ico" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="public/css/time.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/css/datepicker3.css" />
   </head>
   <body>
     <!-- navigation bar -->
@@ -53,20 +54,34 @@
     
     <!-- content -->
     <div class="container">
-      <div class="row">
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-	</div>
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-	</div>
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-	</div>
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-	</div>
+      <div class="well">
+	<form class="form-inline">
+	  <div class="form-group">
+	    <input type="text" class="form-control" placeholder="Zeit" />
+	  </div>
+	  <div class="form-group">
+	    <input type="text" class="form-control" placeholder="Project" />
+	  </div>
+	  <div class="form-group">
+	    <input id="date" type="text" class="form-control" placeholder="Datum" />
+	  </div>
+	  <button type="button" class="btn btn-primary">
+	    Speichern
+	    <span class="glyphicon glyphicon-ok"></span>
+	  </button>
+	</form>
       </div>
     </div>
     <!-- scripts which starts after page load -->
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="bower_components/holderjs/holder.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+    <script tyle="text/javascript">
+      $(document).ready(function(){
+        $("#date").datepicker({orientation: "top auto", autoclose: true, calendarWeeks: true, todayHighlight: true, language: "de"});
+      });
+    </script>
   </body>
 </html>
