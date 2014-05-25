@@ -2,6 +2,40 @@
     height: 30px;
 }
 
-.nav-tabs {
-    margin-bottom: 40px;
+.no-border {
+    border: 0;
+}
+
+.searchbar {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.thumbnail .caption{
+    border-top: 1px solid #DDD;
+}
+
+.thumbnail-project {
+    border-radius: 10px;
+}
+
+.thumbnail-project:focus, .thumbnail-project:hover {
+    text-decoration: none;
+}
+
+.project-image-sm {
+    height: 170px;
+    width: 100%;
+    position: relative
+}
+
+.project-image-sm img {
+    max-height: 170px;
+    max-width: 100%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }

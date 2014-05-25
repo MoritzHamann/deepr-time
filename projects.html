@@ -1,0 +1,256 @@
+<html>
+  <head>
+    <title>Deepr Time Management</title>
+    <link rel="shortcut icon" href="public/img/favicon.ico" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="public/css/time.css"/>
+  </head>
+  <body>
+    <!-- navigation bar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+	<div class="navbar-header">
+	  <a class="navbar-brand" href="#">
+	    <img class="navigation-logo" src="public/img/logo.png" />
+	  </a>
+	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	  </button>
+	</div>
+	<div id="main-navigation" class="collapse navbar-collapse">
+	  <ul class="nav navbar-nav navbar-right">
+	    <li>
+	      <a href="#">
+		Buchen <span class="glyphicon glyphicon-time"></span>
+	      </a>
+	    </li>
+	    <li>
+	      <a href="#">
+		Projekte <span class="glyphicon glyphicon-th"></span>
+	      </a>
+	    </li>
+	    <li>
+	      <a href="#">
+		Berichte <span class="glyphicon glyphicon-stats"></span>
+	      </a>
+	    </li>
+	    <li class="dropdown">
+	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		Moritz Hamann
+		<b class="caret"></b>
+		<ul class="dropdown-menu">
+		  <li><a href="#">Profile bearbeiten</a></li>
+		  <li><a href="#">Ausloggen</a></li>
+		</ul>
+	      </a>
+	    </li>
+	  </ul>
+	</div>
+      </div>
+    </nav>
+    
+    <!-- content -->
+    <div class="container">
+
+      <!-- panel for reference, but using modal instead -->
+      <div class="panel panel-default" style="display: none">
+	<div class="panel-body">
+
+	  <div class="thumbnail no-border">
+	    <img src="public/img/ninja.png" style="height:170px;" />
+	  </div>
+	  
+	  <div class="form-horizontal">
+	    <div class="form-group">
+	      <label for="name" class="col-lg-2 control-label">Projektname:</label>
+	      <div class="col-lg-10 has-error has-feedback">
+		<input type="text" class="form-control" />
+		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<span class="help-block">Name bereits vergeben</span>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label for="name" class="col-lg-2 control-label">URL:</label>
+	      <div class="col-lg-10 has-success has-feedback">
+		<input type="text" class="form-control" />
+		<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label for="name" class="col-lg-2 control-label">Bild-URL:</label>
+	      <div class="col-lg-10">
+		<div class="input-group">
+		  <input type="text" class="form-control" />
+		  <span class="input-group-addon">
+		    <span class="glyphicon glyphicon-chevron-left"></span>
+		  </span>
+		  <span class="input-group-addon">
+		    <span class="glyphicon glyphicon-chevron-right"></span>
+		  </span>
+		</div>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label for="name" class="col-lg-2 control-label">Beschreibung:</label>
+	      <div class="col-lg-10">
+		<textarea row="3" class="form-control"></textarea>
+	      </div>
+	    </div>
+	    <div class="from-group">
+	      <div class="col-lg-offset-2 col-lg-10">
+		<button type="button" class="btn btn-primary">
+		  Speichern
+		  <span class="glyphicon glyphicon-ok-sign"></span>
+		</button>
+	      </div>
+	    </div>
+
+	  </div> <!-- form-horizontal -->
+	</div> <!-- panel-body -->
+     </div> <!-- panel -->
+
+
+     <!-- modal test -->
+     <div class="modal fade" id="modal-project">
+       <div class="modal-dialog modal-lg">
+	 <div class="modal-content">
+	   <div class="modal-body">
+	     
+	     <div class="thumbnail no-border">
+	       <div class="project-image-sm">
+		 <img src="public/img/ninja.png" />
+	       </div>
+	     </div>
+	     
+	     <div class="form-horizontal">
+	       <div class="form-group">
+		 <label for="name" class="col-lg-2 control-label">Projektname:</label>
+		 <div class="col-lg-10 has-error has-feedback">
+		   <input type="text" class="form-control" />
+		   <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		   <span class="help-block">Name bereits vergeben</span>
+		 </div>
+	       </div>
+	       <div class="form-group">
+		 <label for="name" class="col-lg-2 control-label">URL:</label>
+		 <div class="col-lg-10 has-success has-feedback">
+		   <input type="text" class="form-control" />
+		   <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+		 </div>
+	       </div>
+	       <div class="form-group">
+		 <label for="name" class="col-lg-2 control-label">Bild-URL:</label>
+		 <div class="col-lg-10">
+		   <div class="input-group">
+		     <input type="text" class="form-control" />
+		     <span class="input-group-addon">
+		       <span class="glyphicon glyphicon-chevron-left"></span>
+		     </span>
+		     <span class="input-group-addon">
+		       <span class="glyphicon glyphicon-chevron-right"></span>
+		     </span>
+		   </div>
+		 </div>
+	       </div>
+	       <div class="form-group">
+		 <label for="name" class="col-lg-2 control-label">Beschreibung:</label>
+		 <div class="col-lg-10">
+		   <textarea row="4" class="form-control"></textarea>
+		 </div>
+	       </div>
+	     </div> <!-- form-horizontal -->
+	   </div><!-- modal-body -->
+	   
+	   <div class="modal-footer">
+	     <button type="button" class="btn btn-primary">
+	       Speichern
+	       <span class="glyphicon glyphicon-ok-sign"></span>
+	     </button>
+	   </div><!-- modal-footer -->
+	 </div> <!-- modal-content -->
+       </div> <!-- modal-dialog -->
+     </div> <!-- modal -->
+
+
+
+
+     <div class="row searchbar">
+      <div class="col-lg-offset-4 col-lg-6">
+	<div class="input-group">
+	  <input type="text" class="form-control" />
+	  <a href="#" class="btn btn-default input-group-addon">
+	    <span class="glyphicon glyphicon-search"></span>
+	  </a>
+	</div>
+      </div>
+      <div class="col-lg-2">
+	<button type="button" class="form-control btn btn-primary" data-toggle="modal" data-target="#modal-project">
+	  Neues Projekt
+	  <span class="glyphicon glyphicon-plus-sign"></span>
+	</button>
+      </div>
+    </div>
+
+
+
+      <div class="row">
+	
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+	  <a href="#" class="thumbnail thumbnail-project">
+	    <div class="project-image-sm">
+	      <img src="holder.js/170x170" />
+	    </div>
+	    <div class="caption">
+	      <h4> Projektname</h4>
+	      Beschreibung des Projekts kommt hier hin
+	    </div>
+	  </a>
+	</div>
+	
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+	  <a href="#" class="thumbnail thumbnail-project">
+	    <div class="project-image-sm">
+	      <img src="holder.js/170x170" />
+	    </div>
+	    <div class="caption">
+	      <h4> Projektname</h4>
+	      Beschreibung des Projekts kommt hier hin
+	    </div>
+	  </a>
+	</div>
+
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+	  <a href="#" class="thumbnail thumbnail-project">
+	    <div class="project-image-sm">
+	      <img src="holder.js/170x170" />
+	    </div>
+	    <div class="caption">
+	      <h4> Projektname</h4>
+	      Beschreibung des Projekts kommt hier hin
+	    </div>
+	  </a>
+	</div>
+
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+	  <a href="#" class="thumbnail thumbnail-project">
+	    <div class="project-image-sm">
+	      <img src="holder.js/170x170" />
+	    </div>
+	    <div class="caption">
+	      <h4> Projektname</h4>
+	      Beschreibung des Projekts kommt hier hin
+	    </div>
+	  </a>
+	</div>
+	
+      </div> <!-- row -->
+      
+    </div> <!-- container -->
+    <!-- scripts which starts after page load -->
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="bower_components/holderjs/holder.js"></script>
+  </body>
+</html>
