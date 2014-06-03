@@ -140,28 +140,11 @@
 	  </div>
 	</div>
 
-	<div class="row">
-	  {{#each project in filtering}}
-	  <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
-	    {{#link-to 'ProjectDetail' project class='thumbnail thumbnail-project' }}
-	      <div class="project-image-sm">
-		<img src="public/img/logo.png" />
-	      </div>
-	      <div class="caption" style="overflow:hidden">
-		<h4> {{project.name}}</h4>
-		<span style="color:green">25/40h</span>
-	      </div>
-	    {{/link-to}}
-	  </div>
-	  {{/each}}
-	  
-	</div> <!-- row -->
-
 	<div class="list-group">
 	{{#each project in filtering}}
-	  {{#link-to "ProjectDetail" project class="list-group-item" }}	    
+	  {{#link-to "ProjectDetail" project class="list-group-item" }}
 	    <span class="list-group-item-heading">{{project.name}}</span>
-	    <span class="badge">25/40h</span>
+	    <span class="badge">25/{{project.total}}h</span>
 	  {{/link-to}}
 	{{/each}}
 	</div>
