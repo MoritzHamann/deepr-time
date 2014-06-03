@@ -156,7 +156,16 @@
 	  {{/each}}
 	  
 	</div> <!-- row -->
-	
+
+	<div class="list-group">
+	{{#each project in filtering}}
+	  {{#link-to "ProjectDetail" project class="list-group-item" }}	    
+	    <span class="list-group-item-heading">{{project.name}}</span>
+	    <span class="badge">25/40h</span>
+	  {{/link-to}}
+	{{/each}}
+	</div>
+
       </div> <!-- container -->
     </script>
 
