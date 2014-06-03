@@ -1,7 +1,7 @@
-deepr = Ember.Application.create();
-deepr.ApplicationAdapter = DS.FixtureAdapter;
+Deepr = Ember.Application.create();
+Deepr.ApplicationAdapter = DS.FixtureAdapter;
 
-deepr.Project = DS.Model.extend({
+Deepr.Project = DS.Model.extend({
     name: DS.attr('string'),
     url: DS.attr('string'),
     imageurl: DS.attr('string'),
@@ -9,38 +9,52 @@ deepr.Project = DS.Model.extend({
     timelogs: DS.hasMany('timelog')
 });
 
-deepr.person = DS.Model.extend({
+Deepr.Person = DS.Model.extend({
     firstname: DS.attr('string'),
     lastname: DS.attr('string'),
     imageurl: DS.attr('string'),
     timelogs: DS.hasMany('timelog')
 });
 
-deepr.timelog = DS.Model.extend({
+Deepr.Timelog = DS.Model.extend({
     date: DS.attr('date'),
     comment: DS.attr('string'),
     hours: DS.attr()
 });
 
+// Fixture data
+Deepr.Project.FIXTURES= [
+    {id: 1, name: "Yaez", url: "www.yaez.de", imageurl: "www.yaez.de/logo.png", timebudget: 50, timelogs: [] },
+    {id: 2, name: "Carbowheel", url: "www.carbowheel.de", imageurl: "www.carbowheel.de/logo.png", timebudget: 50, timelogs: [] },
+    {id: 3, name: "Transferre", url: "www.transferre.de", imageurl: "www.transferre.de/logo.png", timebudget: 35, timelogs: [] },
+    {id: 4, name: "Montagetools", url: "www.transferre.de", imageurl: "www.transferre.de/logo.png", timebudget: 35, timelogs: [] },
+    {id: 5, name: "cc-bs", url: "www.transferre.de", imageurl: "www.transferre.de/logo.png", timebudget: 35, timelogs: [] },
+]
 
-deepr.Router.map(function (){
+Deepr.Router.map(function (){
     this.resource('projects', {path: 'projekte'}, function(){
-	this.resource('detail', {path: '/:project_id'});
+	this.resource('ProjectDetail', {path: '/:project_id'});
     });
     this.route('timelog', {path: 'buchen'});
 });
 
-deepr.DetailRoute = Ember.Route.extend({
+Deepr.ProjectDetailRoute = Ember.Route.extend({
     model: function(params){
 	return "asdf";
     }
 });
 
-deepr.ProjectsIndexController = Ember.ArrayController.extend({
-    model: function (){
-	return [{a: 1}];
-    },
+Deepr.ProjectsIndexRoute = Ember.Route.extend({
+    model: function(){
+	return this.store.find('project');
+    }
+});
+
+Deepr.ProjectsIndexController = Ember.ArrayController.extend({
     filtering: function (){
-	return this.get('filtertext');
+	that = this;
+	return this.filter(function(item, index, enumobj){
+	    return item.get('name').toLowerCase().match(that.get('filtertext'));
+	});
     }.property('filtertext')
 });

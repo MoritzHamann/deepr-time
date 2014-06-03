@@ -134,61 +134,26 @@
 	  </div>
 	  <div class="col-sm-3">
 	    <button type="button" class="form-control btn btn-primary" data-toggle="modal" data-target="#modal-project">
-	      {{filtering}}
+	      Neues Projekt
 	      <span class="glyphicon glyphicon-plus-sign"></span>
 	    </button>
 	  </div>
 	</div>
 
 	<div class="row">
-	  
-	  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-	    <a href="#" class="thumbnail thumbnail-project">
+	  {{#each project in filtering}}
+	  <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+	    {{#link-to 'ProjectDetail' project class='thumbnail thumbnail-project' }}
 	      <div class="project-image-sm">
-		<img src="holder.js/170x170" />
+		<img src="public/img/logo.png" />
 	      </div>
-	      <div class="caption">
-		<h4> Projektname</h4>
-		Beschreibung des Projekts kommt hier hin
+	      <div class="caption" style="overflow:hidden">
+		<h4> {{project.name}}</h4>
+		<span style="color:green">25/40h</span>
 	      </div>
-	    </a>
+	    {{/link-to}}
 	  </div>
-	  
-	  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-	    <a href="#" class="thumbnail thumbnail-project">
-	      <div class="project-image-sm">
-		<img src="holder.js/170x170" />
-	      </div>
-	      <div class="caption">
-		<h4> Projektname</h4>
-		Beschreibung des Projekts kommt hier hin
-	      </div>
-	    </a>
-	  </div>
-
-	  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-	    <a href="#" class="thumbnail thumbnail-project">
-	      <div class="project-image-sm">
-		<img src="holder.js/170x170" />
-	      </div>
-	      <div class="caption">
-		<h4> Projektname</h4>
-		Beschreibung des Projekts kommt hier hin
-	      </div>
-	    </a>
-	  </div>
-
-	  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-	    <a href="#" class="thumbnail thumbnail-project">
-	      <div class="project-image-sm">
-		<img src="holder.js/170x170" />
-	      </div>
-	      <div class="caption">
-		<h4> Projektname</h4>
-		Beschreibung des Projekts kommt hier hin
-	      </div>
-	    </a>
-	  </div>
+	  {{/each}}
 	  
 	</div> <!-- row -->
 	
@@ -205,26 +170,26 @@
 
     
     <script type="text/x-handlebars" id="timelog">
-    <!-- content -->
-    <div class="container">
-      <div class="well">
-	<form class="form-inline">
-	  <div class="form-group">
-	    <input type="text" class="form-control" placeholder="Zeit" />
-	  </div>
-	  <div class="form-group">
-	    <input type="text" class="form-control" placeholder="Project" />
-	  </div>
-	  <div class="form-group">
-	    <input id="date" type="text" class="form-control" placeholder="Datum" />
-	  </div>
-	  <button type="button" class="btn btn-primary">
-	    Speichern
+      <!-- content -->
+      <div class="container">
+	<div class="well">
+	  <form class="form-inline">
+	    <div class="form-group">
+	      <input type="text" class="form-control" placeholder="Zeit" />
+	    </div>
+	    <div class="form-group">
+	      <input type="text" class="form-control" placeholder="Project" />
+	    </div>
+	    <div class="form-group">
+	      <input id="date" type="text" class="form-control" placeholder="Datum" />
+	    </div>
+	    <button type="button" class="btn btn-primary">
+	      Speichern
 	    <span class="glyphicon glyphicon-ok"></span>
-	  </button>
-	</form>
+	    </button>
+	  </form>
+	</div>
       </div>
-    </div>
     </script>
 
     <!-- scripts which starts after page load -->
