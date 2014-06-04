@@ -10,8 +10,10 @@ Deepr.Project = DS.Model.extend({
     status: DS.attr('string'),
     
     total: function(){
-	
-    }.property('timebudget', 'timelogs')
+	return this.get('timelogs').reduce(function(prev, item){
+	    return prev + item.get('hours');
+	}, 0);
+    }.property('timebudget', 'timelogs.@each.hours')
 });
 
 Deepr.Person = DS.Model.extend({
@@ -29,8 +31,8 @@ Deepr.Timelog = DS.Model.extend({
 
 // Fixture data
 Deepr.Project.FIXTURES= [
-    {id: 1, name: "Yaez", url: "www.yaez.de", imageurl: "www.yaez.de/logo.png", timebudget: 50, timelogs: [1,2,3], status: 'open' },
-    {id: 2, name: "Carbowheel", url: "www.carbowheel.de", imageurl: "www.carbowheel.de/logo.png", timebudget: 50, timelogs: [4,5,6], status: 'open' },
+    {id: 1, name: "Yaez", url: "www.yaez.de", imageurl: "www.yaez.de/logo.png", timebudget: 7, timelogs: [1,2,3], status: 'open' },
+    {id: 2, name: "Carbowheel", url: "www.carbowheel.de", imageurl: "www.carbowheel.de/logo.png", timebudget: 8, timelogs: [4,5,6], status: 'open' },
     {id: 3, name: "Transferre", url: "www.transferre.de", imageurl: "www.transferre.de/logo.png", timebudget: 35, timelogs: [7], status: 'closed' },
     {id: 4, name: "Montagetools", url: "www.transferre.de", imageurl: "www.transferre.de/logo.png", timebudget: 35, timelogs: [], status: 'closed' },
     {id: 5, name: "cc-bs", url: "www.transferre.de", imageurl: "www.transferre.de/logo.png", timebudget: 35, timelogs: [], status: 'open' },
@@ -48,12 +50,12 @@ Deepr.Timelog.FIXTURES = [
 
 Deepr.Router.map(function (){
     this.resource('projects', {path: 'projekte'}, function(){
-	this.resource('ProjectDetail', {path: '/:project_id'});
+	this.resource('projectdetail', {path: '/:project_id'});
     });
     this.route('timelog', {path: 'buchen'});
 });
 
-Deepr.ProjectDetailRoute = Ember.Route.extend({
+Deepr.ProjectdetailRoute = Ember.Route.extend({
     model: function(params){
 	return "asdf";
     }
@@ -65,11 +67,38 @@ Deepr.ProjectsIndexRoute = Ember.Route.extend({
     }
 });
 
+
+
 Deepr.ProjectsIndexController = Ember.ArrayController.extend({
+    itemController: 'projectdetail',
+
     filtering: function (){
 	that = this;
 	return this.filter(function(item, index, enumobj){
 	    return item.get('name').toLowerCase().match(that.get('filtertext'));
 	});
-    }.property('filtertext')
+    }.property('filtertext'),
+
+    openprojects: function(){
+	return this.get('filtering').filterProperty('status','open');
+    }.property('filtering'),
+
+    closedprojects: function(){
+	return this.get('filtering').filterProperty('status','closed');xs
+    }.property('filtering')
+});
+
+Deepr.ProjectdetailController = Ember.ObjectController.extend({
+    bootstrap_critical: function(){
+	var done = Math.round(this.get('total')/this.get('timebudget')*100)/100;
+	if (done > 1){
+	    return 'alert-danger';
+	}
+	if (done <=1 && done >=0.8){
+	    return 'alert-warning';
+	}
+	if (done < 0.8){
+	    return 'alert-success';
+	}
+    }.property('total','timebudget')
 });

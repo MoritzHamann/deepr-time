@@ -140,13 +140,28 @@
 	  </div>
 	</div>
 
+	<div class="page-header">
+	  <h4>Offene Projekte</h4>
+	</div>
 	<div class="list-group">
-	{{#each project in filtering}}
-	  {{#link-to "ProjectDetail" project class="list-group-item" }}
+	{{#each project in openprojects}}
+	  {{#link-to "projectdetail" project class="list-group-item" }}
 	    <span class="list-group-item-heading">{{project.name}}</span>
-	    <span class="badge">25/{{project.total}}h</span>
+	    <span {{bind-attr class=":badge project.bootstrap_critical" }}>{{project.total}}/{{project.timebudget}}h</span>
 	  {{/link-to}}
 	{{/each}}
+	</div>
+
+	<div class="page-header">
+	  <h4>Abgeschlossene Projekte</h4>
+	</div>
+	<div class="list-group">
+	  {{#each project in closedprojects}}
+	    {{#link-to "projectdetail" project class="list-group-item" }}
+	      <span class="list-group-item-heading">{{project.name}}</span>
+	      <span {{bind-attr class=":badge project.bootstrap_critical" }}>{{project.total}}/{{project.timebudget}}h</span>
+	    {{/link-to}}
+	  {{/each}}
 	</div>
 
       </div> <!-- container -->
